@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for proper rendering and SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered image classification using PyTorch and FastAPI">
+    <title>AI Image Classification</title>
+    
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header Section -->
+        <div class="header">
+            <h1><i class="fas fa-brain"></i> AI Image Classifier</h1>
+            <p>Upload an image and let our AI identify what it contains</p>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            
+            <!-- Upload Form -->
+            <form method="post" enctype="multipart/form-data" action="/" id="uploadForm">
+                
+                <!-- Upload Section: Two-column layout -->
+                <div class="upload-section">
+                    
+                    <!-- Left Column: Upload Area -->
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">Click to upload or drag & drop</div>
+                        <div class="upload-subtext">Supports JPG, PNG, GIF (Max 10MB)</div>
+                        <!-- Hidden file input -->
+                        <input type="file" name="file" class="file-input" id="fileInput" accept="image/*">
+                    </div>
+
+                    <!-- Right Column: Image Preview -->
+                    <div class="image-preview placeholder" id="imagePreview">
+                        <div>
+                            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 15px; display: block;"></i>
+                            <div>Image preview will appear here</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-magic"></i> Classify Image
+                </button>
+            </form>
+
+            <!-- Loading Animation (Hidden by default) -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div>Analyzing your image...</div>
+            </div>
+
+            <!-- Error Message Display (Hidden by default) -->
+            <div class="error-message" id="errorMessage"></div>
+
+            <!-- Results Section (Shown when results are available) -->
+            {% if result %}
+            <div class="results-section" id="resultsSection" style="display: block;">
+                <div class="result-card">
+                    <!-- Results Header -->
+                    <div class="result-header">
+                        <div class="result-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="result-title">Classification Results</div>
+                    </div>
+                    
+                    <!-- Results Details Grid -->
+                    <div class="result-details">
+                        <!-- Predicted Class -->
+                        <div class="result-item">
+                            <div class="result-label">Predicted Class</div>
+                            <div class="result-value">{{ result.Prediction.Predicted_Class_Name }}</div>
+                        </div>
+                        
+                        <!-- Class ID -->
+                        <div class="result-item">
+                            <div class="result-label">Class ID</div>
+                            <div class="result-value">{{ result.Prediction.Predicted_Class_ID }}</div>
+                        </div>
+                        
+                        <!-- Processing Time -->
+                        <div class="result-item">
+                            <div class="result-label">Processing Time</div>
+                            <div class="result-value">{{ result.Inference_Time }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; color: white; opacity: 0.8; font-size: 0.9rem;">
+        <p>Powered by PyTorch & FastAPI | Built with ❤️ for AI Image Classification</p>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
