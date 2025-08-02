@@ -1,6 +1,6 @@
 # Image Recognition with FastAPI & PyTorch
 
-A modern web application for image classification using PyTorch and FastAPI. Upload images and get instant AI-powered predictions with a beautiful, responsive interface.
+A modern web application for image classification using PyTorch and FastAPI. Upload images and get instant AI-powered predictions with a beautiful, responsive interface. **Now containerized with Docker for easy deployment anywhere!**
 
 ## 🚀 Features
 
@@ -16,7 +16,9 @@ A modern web application for image classification using PyTorch and FastAPI. Upl
 
 ## 🛠️ Installation
 
-### 1. Clone the Repository
+### Option 1: Docker (Recommended)
+
+#### 1. Clone the Repository
 ```bash
 git clone <your-repository-url>
 cd Image_Recognition_with_FastAPI_&_PyTorch
@@ -92,6 +94,13 @@ Run the comprehensive test suite:
 # Run tests
 python -m pytest test_main.py -v
 ```
+OR
+
+```bash
+# Run tests
+ pytest  -vv
+```
+
 
 ## 🌐 API Endpoints
 
@@ -132,7 +141,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 1. **Numpy Compatibility Error**
    - **Solution**: Ensure numpy version 1.26.0 is installed (already in requirements.txt)
-   - **Command**: `pip install numpy==1.26.0`
+   - **Command**: `pip install numpy`
 
 2. **SSL Certificate Error**
    - **Solution**: The app includes SSL context handling for macOS
