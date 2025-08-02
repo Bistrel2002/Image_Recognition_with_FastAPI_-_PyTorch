@@ -24,7 +24,60 @@ git clone <your-repository-url>
 cd Image_Recognition_with_FastAPI_&_PyTorch
 ```
 
-### 2. Create Virtual Environment
+#### 2. Build and Run with Docker
+```bash
+#login
+docker login
+
+# Build the Docker image
+docker build -t image-recognition-app .
+
+# Run the container
+docker run -p 8000:8000 image-recognition-app
+```
+
+#### 3. Access Your Application
+- **Web Interface**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
+
+### Option 2: Docker Hub (Pre-built Image)
+
+#### 1. Pull from Docker Hub
+```bash
+# Pull the pre-built image
+docker pull bistrel/image-recognition-app:v2
+
+# Run the container
+docker run -p 8000:8000 bistrel/image-recognition-app:v2
+```
+
+#### 2. Access Your Application
+- **Web Interface**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
+
+### Option 3: Docker Desktop (GUI)
+
+#### 1. Open Docker Desktop
+- Launch Docker Desktop application
+- Ensure it's running (green icon in menu bar)
+
+#### 2. Pull and Run
+- Go to **"Images"** tab
+- Click **"Pull"** and enter: `bistrel/image-recognition-app:v2`
+- Click **"Run"** button
+
+#### 3. Access Your Application
+- Click visit: http://localhost:8000 Port from Containers
+
+### Option 4: Local Development
+
+#### 1. Clone the Repository
+```bash
+git clone <your-repository-url>
+cd Image_Recognition_with_FastAPI_&_PyTorch
+```
+
+#### 2. Create Virtual Environment
 ```bash
 # Create virtual environment
 python -m venv .venv
@@ -37,29 +90,18 @@ source .venv/bin/activate
 .venv\Scripts\activate
 ```
 
-### 3. Install Dependencies
+#### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Download Model Files
-The application will automatically download the required model files on first run.
-
-## 🚀 Usage
-
-### Local Development
+#### 4. Local Development
 ```bash
 # Start the development server
 uvicorn main:app --reload
 
 # Open your browser and go to
 http://localhost:8000
-```
-
-### Production Deployment
-```bash
-# Start the production server
-uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
 ## 📁 Project Structure
@@ -72,6 +114,8 @@ Image_Recognition_with_FastAPI_&_PyTorch/
 ├── README.md              # This file
 ├── test_main.py           # Test suite
 ├── Procfile               # Production deployment configuration
+├── Dockerfile             # Docker container configuration
+├── .dockerignore          # Docker build exclusions
 ├── template/
 │   └── index.html         # Main HTML template
 └── static/
@@ -185,6 +229,7 @@ This project is licensed under the MIT License.
 - [PyTorch](https://pytorch.org/) for machine learning capabilities
 - [ImageNet](https://image-net.org/) for the pre-trained model
 - [Uvicorn](https://www.uvicorn.org/) for the ASGI server
+- [Docker](https://www.docker.com/) for containerization and deployment
 
 ---
 
